@@ -1,0 +1,36 @@
+name: CI - Unit Test
+
+on: 
+  push:
+    branchs:
+      - main
+    pull_request:
+      branchs:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+      uses: actions/checkout@v2
+
+      - name: Set up .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+      - name: Restore dependencies
+      run: dotnet restore ./UnitTeste.sln
+
+      - name: Build the solution
+      run: dotnet build ./UnitTeste.sln --configuration Release --no-restore
+
+      - name: Run unit tests
+      run: dotnet test ./NetworkUtility.Test.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
+
+      - name: Upload test results
+      uses: actions/upload-artifact@v4
+      with:
+        name: TestResults
+        path: Test/TestResults/TestResults.trx
