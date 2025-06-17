@@ -28,7 +28,7 @@ jobs:
         run: dotnet build ./UnitTeste.sln --configuration Release --no-restore
 
       - name: Run unit tests
-        run: dotnet test .\NetworkUtility\NetworkUtility.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
+        run: dotnet test ./NetworkUtility/NetworkUtility.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
