@@ -2,6 +2,14 @@
 {
     public class WorldDumbestFunctionTests
     {
+        /// <summary>
+        /// Executes a test for the <see cref="WorldDumbestFunction.ReturnsPikachuIfZero"/> method. Verifies that the
+        /// method returns "PIKACHU" when the input is zero.
+        /// </summary>
+        /// <remarks>This method is intended to validate the behavior of <see
+        /// cref="WorldDumbestFunction.ReturnsPikachuIfZero"/>  by providing a predefined input and checking the output
+        /// against the expected result. It writes the test result to the console, indicating whether the test passed or
+        /// failed.</remarks>
         public static void WorldDumbestFunction_ReturnsPikachuIfZero_ReturnsString()
         {
             try
